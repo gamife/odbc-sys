@@ -60,6 +60,12 @@ where
         stmt.describe_param(parameter_number).into_result(&stmt)
     }
 
+    /// Returns the number of parameters in an SQL statement.
+    pub fn num_params(&mut self) -> Result<i16, Error> {
+        let stmt = self.as_stmt_ref();
+        stmt.num_params().into_result(&stmt)
+    }
+
     /// Unless you want to roll your own column buffer implementation users are encouraged to use
     /// [`Self::into_text_inserter`] instead.
     ///
